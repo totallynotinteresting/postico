@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-read -p "Enter the path to the app (default: /Applications/Postico.app): " APP_PATH
-APP_PATH=${APP_PATH:-/Applications/Postico.app}
+read -p "Enter the path to the app (default: /Applications/Postico\ 2.app): " APP_PATH
+APP_PATH=${APP_PATH:-/Applications/Postico\ 2.app}
 
 MACOS_PATH="$APP_PATH/Contents/MacOS"
 
@@ -12,7 +12,7 @@ RELEASE_URL="https://github.com/totallynotinteresting/postico/releases/latest/do
 
 if [ ! -d "$MACOS_PATH" ]; then
     echo "Postico.app was not found at $MACOS_PATH"
-    echo "please make sure that Postico.app is in /Applications/"
+    echo "please make sure that Postico 2.app is in /Applications/"
     exit 1
 fi
 
