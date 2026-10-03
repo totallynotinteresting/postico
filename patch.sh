@@ -2,7 +2,7 @@
 set -e
 
 read -p "Enter the path to the app (default: /Applications/Postico\ 2.app): " APP_PATH
-APP_PATH=${APP_PATH:-/Applications/Postico\ 2.app}
+APP_PATH=${APP_PATH:-'/Applications/Postico 2.app'}
 
 MACOS_PATH="$APP_PATH/Contents/MacOS"
 
