@@ -29,6 +29,8 @@ if git clone "$REPO_URL" postico_patch; then
         echo "either somethings gone wrong or you dont have clang installed, so we're gonna download it from the gh directly"
         curl -L -o hook.dylib "$RELEASE_URL"
     fi
+    # Download postico.sh in the success case too
+    curl -L -o postico.sh "$RAW_URL/postico.sh"
 else
     mkdir -p postico_patch
     cd postico_patch || exit 1    
@@ -49,12 +51,12 @@ codesign -f -s - hook.dylib
 
 echo "blah blah moving it to where it belongs"
 mv hook.dylib ..
-mv ../postico.sh ../Postico
+mv postico.sh ../postico.sh
 echo "gotta resign postico as well because something about macos doing hardened runtime"
 codesign --remove-signature ../Postico
 codesign --force --deep --sign - ../Postico
 mv ../Postico ../Postico.o
-mv ./postico.sh ../Postico
+mv ../postico.sh ../Postico
 chmod +x ../Postico
 
 cd ..
